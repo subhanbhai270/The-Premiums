@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7213609896135127"
+     crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">The Premium - Discover Premium Apps & Software</title>
+    <meta name="description" content="Discover and download premium Android apps and PC software.">
+    <meta name="theme-color" content="#0071e3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" id="faviconLink">
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>">
+    
+    <script>
+        const manifest = {
+            name: "The Premium", short_name: "The Premium", start_url: "/", display: "standalone",
+            background_color: "#f5f5f7", theme_color: "#0071e3",
+            icons: [{ src: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>", sizes: "192x192", type: "image/svg+xml" }]
+        };
+        const blob = new Blob([JSON.stringify(manifest)], { type: 'application/json' });
+        document.write(`<link rel="manifest" href="${URL.createObjectURL(blob)}">`);
+    </script>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root { --bg: #f5f5f7; --text: #1d1d1f; --accent: #0071e3; --nav-h: 70px; }
+        * { font-family: 'Inter', -apple-system, sans-serif; -webkit-tap-highlight-color: transparent; }
+        body { background: var(--bg); color: var(--text); padding-bottom: calc(var(--nav-h) + 20px); min-height: 100vh; overflow-x: hidden; }
+        .glass { background: rgba(255,255,255,0.95); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .card { background: #fff; border-radius: 24px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); transition: all 0.4s ease; cursor: pointer; overflow: hidden; }
+        .card:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(0,0,0,0.12); }
+        .card:active { transform: scale(0.98); }
+        .btn { background: var(--accent); color: #fff; border-radius: 980px; padding: 12px 28px; font-weight: 600; border: none; cursor: pointer; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; justify-content: center; }
+        .btn:hover { background: #0077ed; }
+        .btn-gray { background: #e8e8ed; color: #1d1d1f; } .btn-gray:hover { background: #dcdce0; }
+        .btn-red { background: #ff3b30; } .btn-red:hover { background: #e0352b; }
+        .btn-green { background: #34c759; } .btn-green:hover { background: #30b350; }
+        .input { background: #f5f5f7; border: 2px solid #e5e5e5; border-radius: 12px; padding: 12px 16px; font-size: 16px; outline: none; width: 100%; transition: all 0.3s; }
+        .input:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(0,113,227,0.1); }
+        .tag-free { background: #34c759; color: #fff; border-radius: 980px; padding: 4px 12px; font-size: 14px; font-weight: 600; }
+        .tag-paid { background: #ff9500; color: #fff; border-radius: 980px; padding: 4px 12px; font-size: 14px; font-weight: 600; }
+        .tab-active { background: var(--accent); color: #fff; border-radius: 980px; }
+        .tab-inactive { color: #6e6e73; }
+        .ads-track { display: flex; animation: scrollAds 30s linear infinite; }
+        .ads-track:hover { animation-play-state: paused; }
+        @keyframes scrollAds { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .toast { position: fixed; bottom: 100px; right: 20px; z-index: 9999; animation: slideIn 0.4s ease; max-width: 350px; }
+        @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+        .modal-overlay { background: rgba(0,0,0,0.4); backdrop-filter: blur(10px); }
+        .modal-in { animation: modalIn 0.4s ease; }
+        @keyframes modalIn { from { opacity: 0; transform: scale(0.95) translateY(20px); } to { opacity: 1; transform: scale(1) translateY(0); } }
+        .bottom-nav { position: fixed; bottom: 0; left: 0; right: 0; background: rgba(255,255,255,0.95); backdrop-filter: blur(30px); border-top: 1px solid rgba(0,0,0,0.1); padding: 8px 16px; z-index: 100; display: flex; justify-content: space-around; height: var(--nav-h); }
+        .nav-item { display: flex; flex-direction: column; align-items: center; gap: 2px; color: #6e6e73; cursor: pointer; padding: 6px 10px; border-radius: 12px; font-size: 10px; transition: all 0.3s; }
+        .nav-item i { font-size: 20px; }
+        .nav-item.active { color: var(--accent); background: rgba(0,113,227,0.1); }
+        .upload-area { border: 2px dashed #d2d2d7; border-radius: 16px; padding: 16px; text-align: center; cursor: pointer; transition: all 0.3s; }
+        .upload-area:hover { border-color: var(--accent); background: rgba(0,113,227,0.05); }
+        .ss-preview { position: relative; display: inline-block; margin: 4px; }
+        .ss-preview img { width: 100px; height: 65px; object-fit: cover; border-radius: 8px; }
+        .ss-preview .del { position: absolute; top: -8px; right: -8px; background: #ff3b30; color: #fff; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-size: 11px; }
+        .install-banner { position: fixed; top: 0; left: 0; right: 0; background: #fff; padding: 12px 20px; z-index: 200; box-shadow: 0 4px 20px rgba(0,0,0,0.1); display: flex; align-items: center; justify-content: space-between; animation: slideDown 0.4s ease; }
+        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+        @media (max-width: 768px) {
+            .card:hover { transform: translateY(-4px); }
+            .toast { left: 10px; right: 10px; bottom: 90px; max-width: none; }
+            .hide-mob { display: none !important; }
+            .modal-in { margin: 8px; border-radius: 20px; max-height: 90vh; }
+            .admin-sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: 280px; z-index: 300; background: #fff; transform: translateX(-100%); transition: transform 0.3s; overflow-y: auto; }
+            .admin-sidebar.open { transform: translateX(0); }
+            .sidebar-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.5); z-index: 299; }
+        }
+        @media (min-width: 769px) {
+            .show-mob { display: none !important; }
+            body { padding-bottom: 0; }
+            .admin-sidebar { width: 240px; flex-shrink: 0; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Install Banner -->
+<div id="installBanner" class="install-banner hidden">
+    <div class="flex items-center gap-3">
+        <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center"><i class="fas fa-crown text-white"></i></div>
+        <div><p class="font-semibold text-sm">Install The Premium</p><p class="text-xs text-gray-500">Add to home screen</p></div>
+    </div>
+    <div class="flex items-center gap-2">
+        <button class="text-sm text-gray-400 px-3 py-2" onclick="dismissInstall()">Later</button>
+        <button class="btn text-sm px-4 py-2" onclick="installPWA()">Install</button>
+    </div>
+</div>
+
+<!-- Loading -->
+<div id="loading" class="fixed inset-0 bg-white z-[9999] flex items-center justify-center">
+    <div class="text-center">
+        <div class="w-20 h-20 bg-gradient-to-br from-blue-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-4 animate-pulse"><i class="fas fa-crown text-white text-4xl"></i></div>
+        <div class="text-2xl font-bold" id="loadingName">The Premium</div>
+    </div>
+</div>
+
+<!-- Share Modal -->
+<div id="shareModal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-overlay absolute inset-0" onclick="closeShareModal()"></div>
+    <div class="modal-in relative max-w-md mx-auto mt-20 bg-white rounded-3xl p-6">
+        <h3 class="text-xl font-bold mb-4 text-center">Share This App</h3>
+        <div class="grid grid-cols-2 gap-2">
+            <button class="btn bg-blue-500 text-sm py-3" onclick="copyShareLink()"><i class="fas fa-copy"></i> Copy Link</button>
+            <button class="btn bg-green-500 text-sm py-3" onclick="shareWA()"><i class="fab fa-whatsapp"></i> WhatsApp</button>
+            <button class="btn bg-blue-700 text-sm py-3" onclick="shareFB()"><i class="fab fa-facebook"></i> Facebook</button>
+            <button class="btn bg-blue-400 text-sm py-3" onclick="shareTW()"><i class="fab fa-twitter"></i> Twitter</button>
+            <button class="btn bg-purple-500 text-sm py-3" onclick="shareIG()"><i class="fab fa-instagram"></i> Instagram</button>
+            <button class="btn bg-gray-600 text-sm py-3" onclick="shareEM()"><i class="fas fa-envelope"></i> Email</button>
+        </div>
+        <button class="absolute top-3 right-3 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center" onclick="closeShareModal()"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+
+<!-- Desktop Nav -->
+<nav class="glass sticky top-0 z-50 px-4 py-4 hide-mob">
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3 cursor-pointer" onclick="scrollTo(0)">
+            <div id="siteLogo" class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center overflow-hidden">
+                <img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" class="w-full h-full object-cover" id="logoImg">
+            </div>
+            <span id="siteName" class="text-2xl font-bold">The Premium</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="bg-gray-100 rounded-2xl px-4 py-2 flex items-center gap-2">
+                <i class="fas fa-search text-gray-400"></i>
+                <input type="text" placeholder="Search..." class="bg-transparent border-none outline-none text-sm w-64" id="searchInput" onkeyup="filterApps()">
+            </div>
+            <button class="relative p-2 hover:bg-gray-100 rounded-full" onclick="showNotifications()">
+                <i class="fas fa-bell text-xl"></i>
+                <span id="notifBadge" class="absolute -top-1 -right-1 w-5 h-5 bg-red-500 text-white text-xs rounded-full hidden items-center justify-center">0</span>
+            </button>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Search -->
+<div class="show-mob px-4 py-3">
+    <div class="bg-gray-100 rounded-2xl px-4 py-3 flex items-center gap-2">
+        <i class="fas fa-search text-gray-400"></i>
+        <input type="text" placeholder="Search..." class="bg-transparent border-none outline-none text-sm flex-1" id="searchInputMobile" onkeyup="filterApps()">
+    </div>
+</div>
+
+<!-- Category Tabs -->
+<div class="max-w-7xl mx-auto px-4 py-3">
+    <div class="flex gap-2 overflow-x-auto pb-2">
+        <button class="tab-active px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0" onclick="filterByCategory('all')" id="tabAll">All</button>
+        <button class="tab-inactive px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0" onclick="filterByCategory('Android')" id="tabAndroid"><i class="fab fa-android mr-1"></i> Android Apps</button>
+        <button class="tab-inactive px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0" onclick="filterByCategory('PC')" id="tabPC"><i class="fas fa-desktop mr-1"></i> PC Software</button>
+        <button class="tab-inactive px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0" onclick="filterByType('free')" id="tabFree">🆓 Free</button>
+        <button class="tab-inactive px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0" onclick="filterByType('paid')" id="tabPaid">💎 Premium</button>
+    </div>
+</div>
+
+<!-- Ad Banner -->
+<div class="max-w-7xl mx-auto px-4 mb-6">
+    <div class="rounded-2xl overflow-hidden shadow-lg" style="height:150px">
+        <div class="ads-track" id="adsTrack" style="height:100%"></div>
+    </div>
+</div>
+
+<!-- Hero Carousel -->
+<div class="max-w-7xl mx-auto px-4 mb-8">
+    <div class="flex gap-4 overflow-x-auto scroll-smooth" id="heroCarousel" style="scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch"></div>
+</div>
+
+<!-- Apps Grid -->
+<div class="max-w-7xl mx-auto px-4 mb-12">
+    <div class="flex flex-wrap items-center justify-between mb-6 gap-3">
+        <h2 class="text-xl md:text-2xl font-bold" id="sectionTitle">All Apps & Software</h2>
+        <div class="flex items-center gap-2">
+            <label class="flex items-center gap-2 text-xs md:text-sm cursor-pointer">
+                <input type="checkbox" id="showBadge" checked onchange="renderApps()"><span>Badge</span>
+            </label>
+            <select class="input text-xs md:text-sm py-2 px-3 w-auto" onchange="sortApps(this.value)">
+                <option value="popular">Popular</option><option value="newest">Newest</option><option value="rating">Top Rated</option><option value="downloads">Most Downloaded</option>
+            </select>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6" id="appsGrid"></div>
+    <div class="text-center mt-8" id="loadMoreWrap"><button class="btn btn-gray text-sm" onclick="loadMore()">Load More</button></div>
+</div>
+
+<!-- App Detail Modal -->
+<div id="appModal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-overlay absolute inset-0" onclick="closeModal()"></div>
+    <div class="modal-in relative w-full max-w-2xl mx-auto mt-4 md:mt-10 bg-white rounded-2xl md:rounded-3xl p-4 md:p-8 max-h-[90vh] overflow-y-auto m-2"><div id="modalContent"></div></div>
+</div>
+
+<!-- Admin Login Modal -->
+<div id="adminLoginModal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-overlay absolute inset-0" onclick="closeAdminLogin()"></div>
+    <div class="modal-in relative w-[90%] max-w-md mx-auto mt-20 bg-white rounded-2xl p-6">
+        <div class="text-center mb-6">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-lock text-white text-2xl"></i></div>
+            <h2 class="text-xl font-bold">Admin Login</h2>
+        </div>
+        <form onsubmit="adminLogin(event)" class="space-y-4">
+            <input type="text" class="input" required id="adminUser" placeholder="Username">
+            <input type="password" class="input" required id="adminPass" placeholder="Password">
+            <div class="bg-gray-50 rounded-xl p-3 flex items-center justify-between">
+                <span class="font-mono text-lg font-bold tracking-wider" id="captchaText"></span>
+                <button type="button" class="text-blue-500 text-sm" onclick="genCaptcha()"><i class="fas fa-redo"></i></button>
+            </div>
+            <input type="text" class="input" required id="captchaInput" placeholder="Enter code">
+            <button type="submit" class="btn w-full"><i class="fas fa-sign-in-alt mr-2"></i>Login</button>
+        </form>
+        <button class="absolute top-3 right-3 w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center" onclick="closeAdminLogin()"><i class="fas fa-times"></i></button>
+    </div>
+</div>
+
+<!-- Admin Dashboard -->
+<div id="adminDash" class="fixed inset-0 z-50 hidden">
+    <div class="absolute inset-0 bg-white flex flex-col">
+        <div class="glass px-4 py-3 flex items-center justify-between border-b">
+            <div class="flex items-center gap-3">
+                <button class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center md:hidden" onclick="toggleSidebar()"><i class="fas fa-bars"></i></button>
+                <button onclick="closeAdminDash()" class="w-10 h-10 bg-gray-100 rounded-full flex items-center justify-center"><i class="fas fa-times"></i></button>
+                <h2 class="text-lg font-bold hidden md:block">Admin Dashboard</h2>
+            </div>
+            <div class="flex items-center gap-2"><span class="text-sm font-semibold hidden md:block">Subhan Mujahid</span><div class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full"></div></div>
+        </div>
+        <div class="flex flex-1 overflow-hidden relative">
+            <div id="sidebarOverlay" class="sidebar-overlay hidden md:hidden" onclick="toggleSidebar()"></div>
+            <div id="adminSidebar" class="admin-sidebar bg-gray-50 p-4 space-y-1 overflow-y-auto">
+                <h2 class="text-lg font-bold px-3 py-2 md:hidden">Admin Menu</h2>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm bg-white shadow-sm" onclick="showAdminSection('dashboard');if(window.innerWidth<768)toggleSidebar()" id="s-dashboard"><i class="fas fa-th-large w-5"></i>Dashboard</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('apps');if(window.innerWidth<768)toggleSidebar()" id="s-apps"><i class="fas fa-mobile-alt w-5"></i>Manage Apps</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('ads');if(window.innerWidth<768)toggleSidebar()" id="s-ads"><i class="fas fa-ad w-5"></i>Manage Ads</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('settings');if(window.innerWidth<768)toggleSidebar()" id="s-settings"><i class="fas fa-globe w-5"></i>Settings</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('ratings');if(window.innerWidth<768)toggleSidebar()" id="s-ratings"><i class="fas fa-star w-5"></i>Ratings</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('users');if(window.innerWidth<768)toggleSidebar()" id="s-users"><i class="fas fa-users w-5"></i>Users</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('social');if(window.innerWidth<768)toggleSidebar()" id="s-social"><i class="fas fa-share-alt w-5"></i>Social</button>
+                <button class="w-full text-left px-3 py-2.5 rounded-xl font-medium flex items-center gap-3 text-sm hover:bg-white" onclick="showAdminSection('notifications');if(window.innerWidth<768)toggleSidebar()" id="s-notifications"><i class="fas fa-bell w-5"></i>Notifications</button>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4 md:p-6" id="adminContent"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Notification Modal -->
+<div id="notifModal" class="fixed inset-0 z-50 hidden">
+    <div class="modal-overlay absolute inset-0"></div>
+    <div class="modal-in relative w-[90%] max-w-md mx-auto mt-40 bg-white rounded-2xl p-6 text-center">
+        <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center mx-auto mb-4"><i class="fas fa-bell text-blue-500 text-3xl"></i></div>
+        <h3 class="text-lg font-bold mb-2">Stay Updated!</h3><p class="text-gray-600 text-sm mb-6">Get notified when new apps are added.</p>
+        <div class="flex gap-3"><button class="flex-1 btn btn-gray text-sm py-3" onclick="document.getElementById('notifModal').classList.add('hidden')">Not Now</button><button class="flex-1 btn text-sm py-3" onclick="enableNotif()">Allow</button></div>
+    </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toastContainer"></div>
+
+<!-- Footer -->
+<footer class="glass border-t mt-20 pb-24 md:pb-8">
+    <div class="max-w-7xl mx-auto px-4 py-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="col-span-2 md:col-span-1">
+                <div class="flex items-center gap-3 mb-3">
+                    <div id="footerLogo" class="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center overflow-hidden"><img src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👑</text></svg>" class="w-full h-full object-cover"></div>
+                    <span id="footerName" class="text-lg font-bold">The Premium</span>
+                </div>
+                <p class="text-gray-600 text-xs">Premium apps & software.</p>
+            </div>
+            <div><h4 class="font-semibold text-sm mb-2">Links</h4><ul class="space-y-1 text-xs text-gray-600"><li><a href="#" onclick="openPage('about');return false">About</a></li><li><a href="#" onclick="openPage('contact');return false">Contact</a></li><li><a href="#" onclick="openPage('privacy');return false">Privacy</a></li></ul></div>
+            <div><h4 class="font-semibold text-sm mb-2">Categories</h4><ul class="space-y-1 text-xs text-gray-600"><li><a href="#" onclick="filterByCategory('Android');return false">Android</a></li><li><a href="#" onclick="filterByCategory('PC');return false">PC Software</a></li></ul></div>
+            <div><h4 class="font-semibold text-sm mb-2">Connect</h4><div class="flex flex-wrap gap-1" id="socialIcons"></div></div>
+        </div>
+        <div class="border-t mt-6 pt-4 text-center text-xs text-gray-600"><p id="footerCopy">© All Reserved 2026 <span class="cursor-pointer hover:text-blue-500 font-semibold" onclick="openAdminLogin()">@</span> The Premium</p></div>
+    </div>
+</footer>
+
+<!-- Bottom Nav -->
+<div class="bottom-nav show-mob">
+    <div class="nav-item active" onclick="scrollTo(0)"><i class="fas fa-home"></i><span>Home</span></div>
+    <div class="nav-item" onclick="filterByCategory('Android')"><i class="fab fa-android"></i><span>Apps</span></div>
+    <div class="nav-item" onclick="filterByCategory('PC')"><i class="fas fa-desktop"></i><span>Software</span></div>
+    <div class="nav-item" onclick="showNotifications()"><i class="fas fa-bell"></i><span>Alerts</span></div>
+    <div class="nav-item" onclick="openAdminLogin()"><i class="fas fa-user-shield"></i><span>Admin</span></div>
+</div>
+
+<script>
+    // ==================== BACKEND API ====================
+    const API_URL = 'http://localhost:3000/api';
+let authToken = localStorage.getItem('tp_token');
+async function apiCall(endpoint, options = {}) {
+    const headers = { 'Content-Type': 'application/json', ...options.headers };
+    if (authToken) headers['Authorization'] = 'Bearer ' + authToken;
+    const res = await fetch(API_URL + endpoint, { ...options, headers });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || 'Failed');
+    return data;
+}
+async function loadFromServer() {
+    try {
+        [apps, ads, settings] = await Promise.all([
+            apiCall('/apps'),
+            apiCall('/ads'),
+            apiCall('/settings')
+        ]);
+        notifications = await apiCall('/notifications');
+        ratings = []; // ratings per-app load hongi
+        applySettings();
+        renderAll();
+        document.getElementById('loading').style.opacity = '0';
+        setTimeout(() => document.getElementById('loading').remove(), 500);
+    } catch(e) {
+        console.log('Server offline, using localStorage');
+        loadData();
+        setTimeout(() => { document.getElementById('loading').style.opacity = '0'; setTimeout(() => document.getElementById('loading').remove(), 500); }, 800);
+        renderAll();
+        applySettings();
+    }
+}
+// ==================== DATA STORE (localStorage) ====================
+const KEY = 'tp_data_v2';
+let apps, ads, settings, notifications, ratings, users;
+let tempSS = [], shareAppId = null, captcha = '', deferredPrompt = null;
+let cat = 'all', type = 'all', search = '', sort = 'popular', vis = 8;
+
+const defaults = {
+    apps: [
+        { id: 1, name: 'Adobe Photoshop', category: 'PC', type: 'paid', price: 20.99, icon: 'https://cdn-icons-png.flaticon.com/512/5968/5968520.png', description: 'Professional image editing and graphic design software. Create anything you can imagine.', screenshots: ['https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600','https://images.unsplash.com/photo-1542744095-fcf48d80b0fd?w=600'], downloadLink: '#', downloads: 1250, rating: 4.8, totalRatings: 342, featured: true, showBadge: true },
+        { id: 2, name: 'WhatsApp', category: 'Android', type: 'free', price: 0, icon: 'https://cdn-icons-png.flaticon.com/512/733/733585.png', description: 'Simple. Reliable. Secure. Message and call for free around the world.', screenshots: ['https://images.unsplash.com/photo-1614680376408-81e91ffe3db7?w=600'], downloadLink: '#', downloads: 5430, rating: 4.7, totalRatings: 891, featured: true, showBadge: true },
+        { id: 3, name: 'Netflix', category: 'Android', type: 'paid', price: 14.99, icon: 'https://cdn-icons-png.flaticon.com/512/732/732228.png', description: 'Watch TV shows and movies anytime, anywhere. Plans from $14.99/month.', screenshots: ['https://images.unsplash.com/photo-1522869635100-9f4c5c86aa37?w=600'], downloadLink: '#', downloads: 3210, rating: 4.6, totalRatings: 567, featured: false, showBadge: true },
+        { id: 4, name: 'Spotify', category: 'PC', type: 'free', price: 0, icon: 'https://cdn-icons-png.flaticon.com/512/174/174872.png', description: 'Music for everyone. Millions of songs and podcasts for free.', screenshots: ['https://images.unsplash.com/photo-1611339555312-e607c8352fd7?w=600'], downloadLink: '#', downloads: 4320, rating: 4.9, totalRatings: 723, featured: true, showBadge: true },
+        { id: 5, name: 'Microsoft Office', category: 'PC', type: 'paid', price: 99.99, icon: 'https://cdn-icons-png.flaticon.com/512/732/732221.png', description: 'Ultimate productivity suite with Word, Excel, PowerPoint.', screenshots: ['https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=600'], downloadLink: '#', downloads: 2150, rating: 4.5, totalRatings: 234, featured: false, showBadge: true }
+    ],
+    ads: [
+        { id: 1, image: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=200&fit=crop', link: '#', title: 'Gaming Deals', active: true },
+        { id: 2, image: 'https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?w=800&h=200&fit=crop', link: '#', title: 'Productivity Apps', active: true },
+        { id: 3, image: 'https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?w=800&h=200&fit=crop', link: '#', title: 'Design Tools', active: true }
+    ],
+    settings: { siteName: 'The Premium', logoUrl: '', faviconUrl: '', footerText: '© All Reserved 2026', showBadge: true, enableNotif: true, whatsapp: '+1234567890', facebook: '', instagram: '', twitter: '', discord: '', showSocial: true, about: 'Premium apps destination.', privacy: 'We value your privacy.', contact: 'contact@thepremium.com', notifMsg: 'New app added!' },
+    notifications: [],
+    ratings: [],
+    users: [{ id: 1, username: 'subhanmujahid', password: 'subhanmujahid786!@#', role: 'admin' }]
+};
+
+function loadData() {
+    const raw = localStorage.getItem(KEY);
+    if (raw) {
+        try {
+            const d = JSON.parse(raw);
+            apps = d.apps || defaults.apps;
+            ads = d.ads || defaults.ads;
+            settings = { ...defaults.settings, ...(d.settings || {}) };
+            notifications = d.notifications || [];
+            ratings = d.ratings || [];
+            users = d.users || defaults.users;
+        } catch(e) { setDefaults(); }
+    } else { setDefaults(); }
+}
+
+function setDefaults() {
+    apps = [...defaults.apps];
+    ads = [...defaults.ads];
+    settings = { ...defaults.settings };
+    notifications = [];
+    ratings = [];
+    users = [...defaults.users];
+    saveData();
+}
+
+function saveData() {
+    localStorage.setItem(KEY, JSON.stringify({ apps, ads, settings, notifications, ratings, users }));
+}
+
+// ==================== INIT ====================
+window.addEventListener('load', () => {
+    loadData();
+    setTimeout(() => { document.getElementById('loading').style.opacity = '0'; setTimeout(() => document.getElementById('loading').remove(), 500); }, 800);
+    renderAll();
+    applySettings();
+    checkDL();
+    
+    window.addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferredPrompt = e; document.getElementById('installBanner').classList.remove('hidden'); });
+    window.addEventListener('appinstalled', () => { document.getElementById('installBanner').classList.add('hidden'); deferredPrompt = null; });
+    if (/iPhone|iPad|iPod/.test(navigator.userAgent) && !window.navigator.standalone) setTimeout(() => document.getElementById('installBanner').classList.remove('hidden'), 3000);
+    setTimeout(() => { if (settings.enableNotif && Notification.permission === 'default') document.getElementById('notifModal').classList.remove('hidden'); }, 5000);
+    
+    if ('serviceWorker' in navigator) {
+        const sw = `self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('fetch',e=>e.respondWith(fetch(e.request)));`;
+        navigator.serviceWorker.register(URL.createObjectURL(new Blob([sw],{type:'application/javascript'})));
+    }
+});
+
+function renderAll() { renderApps(); renderAds(); renderHero(); renderSocial(); updateBadge(); }
+function applySettings() {
+    document.getElementById('siteName').textContent = settings.siteName;
+    document.getElementById('footerName').textContent = settings.siteName;
+    document.getElementById('loadingName').textContent = settings.siteName;
+    document.title = settings.siteName;
+    document.getElementById('footerCopy').innerHTML = settings.footerText + ' <span class="cursor-pointer hover:text-blue-500 font-semibold" onclick="openAdminLogin()">@</span> ' + settings.siteName;
+    document.getElementById('showBadge').checked = settings.showBadge;
+    if (settings.logoUrl) { document.getElementById('logoImg').src = settings.logoUrl; document.getElementById('footerLogo').querySelector('img').src = settings.logoUrl; }
+    if (settings.faviconUrl) document.getElementById('faviconLink').href = settings.faviconUrl;
+}
+
+// ==================== RENDER ====================
+function renderApps(filteredList = null) {
+    if (!filteredList) {
+        let f = [...apps];
+        if (cat !== 'all') f = f.filter(a => a.category === cat);
+        if (type !== 'all') f = f.filter(a => a.type === type);
+        if (search) { const s = search.toLowerCase(); f = f.filter(a => a.name.toLowerCase().includes(s) || a.description.toLowerCase().includes(s)); }
+        if (sort === 'newest') f.sort((a,b) => b.id - a.id);
+        else if (sort === 'rating') f.sort((a,b) => b.rating - a.rating);
+        else if (sort === 'downloads') f.sort((a,b) => b.downloads - a.downloads);
+        else f.sort((a,b) => (b.downloads+b.totalRatings) - (a.downloads+a.totalRatings));
+        filteredList = f.slice(0, vis);
+        document.getElementById('loadMoreWrap').style.display = vis < f.length ? 'block' : 'none';
+        let t = 'All Apps & Software';
+        if (cat !== 'all') t = cat + (cat==='Android'?' Apps':' Software');
+        document.getElementById('sectionTitle').textContent = t;
+    }
+    const grid = document.getElementById('appsGrid');
+    if (filteredList.length === 0) { grid.innerHTML = '<div class="col-span-full text-center py-12 text-gray-400"><i class="fas fa-search text-4xl mb-4"></i><p>No apps found</p></div>'; return; }
+    const showB = document.getElementById('showBadge')?.checked ?? true;
+    grid.innerHTML = filteredList.map(app => `
+        <div class="card p-4 md:p-6" onclick="openDetail(${app.id})">
+            <div class="flex flex-col items-center text-center">
+                <img src="${app.icon}" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl mb-3 object-cover shadow-md" loading="lazy" onerror="this.src='https://via.placeholder.com/80'">
+                <h3 class="font-semibold text-sm md:text-lg mb-1 line-clamp-1">${app.name}</h3>
+                <div class="flex items-center mb-1">${stars(app.rating)}<span class="text-xs text-gray-500 ml-1">${app.rating}</span></div>
+                <div class="flex items-center text-xs text-gray-500 mb-2"><i class="fas fa-download mr-1"></i>${fmtNum(app.downloads)}</div>
+                <div class="flex items-center gap-1"><span class="text-[10px] md:text-xs px-2 py-1 bg-gray-100 rounded-full">${app.category}</span>${showB && app.showBadge !== false ? (app.type==='free'?'<span class="tag-free text-[10px] md:text-sm">FREE</span>':'<span class="tag-paid text-[10px] md:text-sm">$'+app.price+'</span>') : ''}</div>
+            </div>
+        </div>
+    `).join('');
+}
+
+function renderAds() {
+    const activeAds = ads.filter(a => a.active !== false);
+    document.getElementById('adsTrack').innerHTML = [...activeAds, ...activeAds].map(ad => `
+        <a href="${ad.link}" class="flex-shrink-0 w-full md:w-[600px] relative" style="height:150px">
+            <img src="${ad.image}" class="w-full h-full object-cover" loading="lazy" onerror="this.style.background='linear-gradient(135deg,#667eea,#764ba2)'">
+            <div class="absolute bottom-3 left-3 bg-black/50 backdrop-blur-md text-white px-3 py-1.5 rounded-full text-xs md:text-sm">${ad.title}</div>
+        </a>
+    `).join('');
+}
+
+function renderHero() {
+    document.getElementById('heroCarousel').innerHTML = apps.filter(a => a.featured).slice(0,5).map(app => `
+        <div class="flex-shrink-0 w-[85vw] md:w-[600px] h-[200px] md:h-[300px] rounded-3xl bg-gradient-to-br from-blue-500 to-purple-600 p-6 md:p-8 flex flex-col justify-between cursor-pointer" onclick="openDetail(${app.id})" style="scroll-snap-align:center">
+            <div><span class="text-white/80 text-xs md:text-sm">⭐ Featured</span><h2 class="text-white text-xl md:text-3xl font-bold mt-1">${app.name}</h2><p class="text-white/90 text-xs md:text-base mt-1 line-clamp-2">${app.description}</p></div>
+            <button class="bg-white text-gray-900 rounded-full px-4 py-1.5 md:px-6 md:py-2 font-semibold text-xs md:text-base w-fit">Explore →</button>
+        </div>
+    `).join('');
+}
+
+function renderSocial() {
+    const icons = [];
+    if (settings.facebook && settings.showSocial) icons.push(`<a href="${settings.facebook}" target="_blank" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100"><i class="fab fa-facebook text-sm"></i></a>`);
+    if (settings.instagram && settings.showSocial) icons.push(`<a href="${settings.instagram}" target="_blank" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-pink-100"><i class="fab fa-instagram text-sm"></i></a>`);
+    if (settings.twitter && settings.showSocial) icons.push(`<a href="${settings.twitter}" target="_blank" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-blue-100"><i class="fab fa-twitter text-sm"></i></a>`);
+    if (settings.discord && settings.showSocial) icons.push(`<a href="${settings.discord}" target="_blank" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-indigo-100"><i class="fab fa-discord text-sm"></i></a>`);
+    if (settings.whatsapp && settings.showSocial) icons.push(`<a href="https://wa.me/${settings.whatsapp}" target="_blank" class="w-8 h-8 bg-gray-100 rounded-full flex items-center justify-center hover:bg-green-100"><i class="fab fa-whatsapp text-sm"></i></a>`);
+    document.getElementById('socialIcons').innerHTML = icons.join('') || '<span class="text-xs text-gray-400">No links</span>';
+}
+
+function stars(r) { let s=''; for(let i=1;i<=5;i++){ if(i<=Math.floor(r)) s+='<i class="fas fa-star text-yellow-400 text-xs"></i>'; else if(i-r<1) s+='<i class="fas fa-star-half-alt text-yellow-400 text-xs"></i>'; else s+='<i class="far fa-star text-gray-300 text-xs"></i>'; } return s; }
+function fmtNum(n) { return n>=1000 ? (n/1000).toFixed(1)+'K' : n.toString(); }
+
+// ==================== FILTERS ====================
+function filterByCategory(c) { cat = c; vis = 8; applyFilters(); updateTabs(); }
+function filterByType(t) { type = t; vis = 8; applyFilters(); updateTabs(); }
+function filterApps() { search = document.getElementById('searchInput')?.value || document.getElementById('searchInputMobile')?.value || ''; vis = 8; applyFilters(); }
+function sortApps(s) { sort = s; applyFilters(); }
+function applyFilters() { renderApps(); }
+function loadMore() { vis += 8; applyFilters(); }
+function updateTabs() { ['All','Android','PC','Free','Paid'].forEach(t => { const el = document.getElementById('tab'+t); if (el) el.className = (cat===t||type===t.toLowerCase()) ? 'tab-active px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0' : 'tab-inactive px-5 py-2 text-sm font-semibold whitespace-nowrap flex-shrink-0'; }); }
+
+// ==================== SHARE ====================
+function openShareModal(id) { shareAppId = id; document.getElementById('shareModal').classList.remove('hidden'); }
+function closeShareModal() { document.getElementById('shareModal').classList.add('hidden'); }
+function getLink() { return shareAppId ? `${location.origin}${location.pathname}?app=${shareAppId}` : location.href; }
+function copyShareLink() { navigator.clipboard.writeText(getLink()).then(() => { toast('Link copied!','success'); closeShareModal(); }); }
+function shareWA() { window.open('https://wa.me/?text='+encodeURIComponent('Check: '+getLink()),'_blank'); closeShareModal(); }
+function shareFB() { window.open('https://facebook.com/sharer/sharer.php?u='+encodeURIComponent(getLink()),'_blank'); closeShareModal(); }
+function shareTW() { window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent('Check: '+getLink()),'_blank'); closeShareModal(); }
+function shareIG() { copyShareLink(); toast('Link copied! Paste in Instagram','info'); closeShareModal(); }
+function shareEM() { window.open('mailto:?subject=Check this&body='+encodeURIComponent(getLink()),'_blank'); closeShareModal(); }
+
+// ==================== APP DETAIL ====================
+function openDetail(id) {
+    const app = apps.find(a => a.id === id);
+    if (!app) return;
+    history.pushState({}, '', '?app='+id);
+    const ar = ratings.filter(r => r.appId === id);
+    document.getElementById('modalContent').innerHTML = `
+        <div class="text-center mb-6">
+            <img src="${app.icon}" class="w-20 h-20 md:w-24 md:h-24 mx-auto mb-3 rounded-3xl shadow-lg" onerror="this.src='https://via.placeholder.com/96'">
+            <h1 class="text-2xl md:text-3xl font-bold mb-2">${app.name}</h1>
+            <div class="flex items-center justify-center mb-2">${stars(app.rating)}<span class="ml-2 text-gray-600 text-sm">(${app.totalRatings} reviews)</span></div>
+            <span class="text-xs px-3 py-1 bg-gray-100 rounded-full">${app.category}</span>${app.type==='paid'?'<span class="ml-2 text-sm font-bold text-orange-500">$'+app.price+'</span>':'<span class="ml-2 text-sm font-bold text-green-500">FREE</span>'}
+            <div class="mt-3"><button class="btn bg-green-500 text-sm py-2" onclick="event.stopPropagation();openShareModal(${app.id})"><i class="fas fa-share-alt"></i> Share</button></div>
+        </div>
+        <div class="mb-6"><h3 class="font-semibold mb-2 text-sm">Screenshots</h3><div class="flex overflow-x-auto gap-3 pb-3">${app.screenshots.map(url => `<div class="flex-shrink-0 w-64 md:w-72 h-40 md:h-48 rounded-2xl overflow-hidden shadow-md"><img src="${url}" class="w-full h-full object-cover" loading="lazy"></div>`).join('')}</div></div>
+        <div class="mb-6"><h3 class="font-semibold mb-2 text-sm">Description</h3><p class="text-gray-600 text-sm">${app.description}</p></div>
+        <div class="mb-6 p-4 md:p-6 bg-gray-50 rounded-2xl">
+            <h3 class="font-semibold mb-2 text-sm">Rate</h3>
+            <div class="flex gap-1 mb-2">${[1,2,3,4,5].map(i => `<i class="fas fa-star text-xl cursor-pointer text-gray-300 hover:text-yellow-400" onclick="rateApp(${app.id},${i})" id="star${i}"></i>`).join('')}</div>
+            <textarea id="reviewText" placeholder="Review..." class="input mb-2 text-sm" rows="2"></textarea>
+            <button class="btn btn-gray text-sm py-2" onclick="submitReview(${app.id})">Submit</button>
+            ${ar.length > 0 ? `<div class="mt-3 space-y-2">${ar.slice(-3).map(r => `<div class="bg-white p-3 rounded-lg text-sm"><div class="flex justify-between"><span class="font-medium">${r.user}</span><span class="text-xs text-gray-400">${r.date}</span></div>${stars(r.rating)}${r.text?`<p class="text-gray-600 mt-1 text-xs">${r.text}</p>`:''}</div>`).join('')}</div>` : ''}
+        </div>
+        ${app.type==='free' ? `<button class="btn w-full py-3 text-base" onclick="downloadApp(${app.id})"><i class="fas fa-download mr-2"></i>Download Now</button>` : `
+            <div class="space-y-3">
+                <div class="bg-orange-50 p-4 rounded-2xl"><h3 class="font-semibold mb-2 text-sm">Request Discount</h3><input type="text" placeholder="Name" class="input mb-2 text-sm" id="discName"><textarea placeholder="Message" class="input mb-2 text-sm" rows="2" id="discMsg"></textarea><button class="btn bg-orange-500 w-full text-sm py-2" onclick="reqDiscount(${app.id})">Request</button></div>
+                <div class="bg-gray-50 p-4 rounded-2xl"><input type="file" class="input mb-2 text-sm" accept="image/*" id="paySS"><textarea placeholder="Review..." class="input mb-2 text-sm" rows="2" id="usrReview"></textarea><button class="btn bg-green-500 w-full text-sm py-2" onclick="sendWA(${app.id})"><i class="fab fa-whatsapp mr-2"></i>Send to WhatsApp</button></div>
+            </div>
+        `}
+    `;
+    document.getElementById('appModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeModal() { document.getElementById('appModal').classList.add('hidden'); document.body.style.overflow = 'auto'; history.pushState({}, '', location.pathname); }
+
+// ==================== RATING ====================
+function rateApp(id, r) {
+    for (let i=1;i<=5;i++) { const s = document.getElementById('star'+i); if (s) s.className = i<=r ? 'fas fa-star text-xl cursor-pointer text-yellow-400' : 'fas fa-star text-xl cursor-pointer text-gray-300'; }
+    sessionStorage.setItem('rate_'+id, r);
+}
+function submitReview(id) {
+    const app = apps.find(a => a.id === id);
+    if (!app) return;
+    const r = parseInt(sessionStorage.getItem('rate_'+id));
+    if (!r) { toast('Select stars!','warning'); return; }
+    const txt = document.getElementById('reviewText')?.value.trim() || '';
+    ratings.push({ id: Date.now(), appId: id, user: 'User'+Math.floor(Math.random()*1000), rating: r, text: txt, date: new Date().toLocaleDateString() });
+    app.totalRatings++; app.rating = Math.round(((app.rating*(app.totalRatings-1))+r)/app.totalRatings*10)/10;
+    sessionStorage.removeItem('rate_'+id);
+    saveData();
+    toast('Review submitted! ⭐','success');
+    addNotif(`New review for ${app.name}: ${r}⭐`);
+    setTimeout(() => openDetail(id), 500);
+}
+function downloadApp(id) {
+    const app = apps.find(a => a.id === id);
+    if (!app) return;
+    app.downloads++;
+    saveData();
+    toast('Downloading... 🚀','success');
+    addNotif(`${app.name} downloaded!`);
+    setTimeout(() => window.open(app.downloadLink||'#','_blank'), 1000);
+}
+function reqDiscount(id) {
+    const name = document.getElementById('discName')?.value;
+    if (!name) { toast('Enter name','error'); return; }
+    toast('Request sent!','success');
+}
+function sendWA(id) {
+    const app = apps.find(a => a.id === id);
+    window.open('https://wa.me/'+settings.whatsapp+'?text='+encodeURIComponent('Payment for '+app?.name),'_blank');
+}
+
+// ==================== NOTIFICATIONS ====================
+function addNotif(msg) {
+    notifications.unshift({ id: Date.now(), message: msg, time: new Date().toLocaleTimeString(), read: false });
+    saveData();
+    updateBadge();
+    if (Notification.permission === 'granted') new Notification(settings.siteName, { body: msg });
+}
+function updateBadge() {
+    const b = document.getElementById('notifBadge');
+    const u = notifications.filter(n => !n.read).length;
+    if (u > 0) { b.textContent = u; b.style.display = 'flex'; } else { b.style.display = 'none'; }
+}
+function showNotifications() {
+    const t = document.createElement('div');
+    t.className = 'toast';
+    t.innerHTML = `<div class="bg-white rounded-2xl shadow-2xl p-4 max-h-80 overflow-y-auto min-w-[280px]"><h4 class="font-semibold mb-2 text-sm">Notifications</h4>${notifications.length===0?'<p class="text-xs text-gray-400">None</p>':notifications.slice(0,10).map(n => `<div class="flex justify-between p-2 ${n.read?'bg-gray-50':'bg-blue-50'} rounded-lg mb-1 text-xs"><p>${n.message}</p><span class="text-gray-400">${n.time}</span></div>`).join('')}</div>`;
+    document.getElementById('toastContainer').appendChild(t);
+    notifications.forEach(n => n.read = true);
+    updateBadge();
+    saveData();
+    setTimeout(() => { t.style.opacity='0'; setTimeout(() => t.remove(), 400); }, 4000);
+}
+function enableNotif() {
+    Notification.requestPermission().then(p => { if (p==='granted') toast('Notifications enabled! 🔔','success'); });
+    document.getElementById('notifModal').classList.add('hidden');
+}
+
+// ==================== ADMIN ====================
+function genCaptcha() { captcha = Math.random().toString(36).substring(2,8).toUpperCase(); document.getElementById('captchaText').textContent = captcha; }
+function openAdminLogin() { genCaptcha(); document.getElementById('adminLoginModal').classList.remove('hidden'); }
+function closeAdminLogin() { document.getElementById('adminLoginModal').classList.add('hidden'); }
+function adminLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('adminUser').value;
+    const p = document.getElementById('adminPass').value;
+    const c = document.getElementById('captchaInput').value;
+    if (c.toUpperCase() !== captcha) { toast('Invalid code!','error'); genCaptcha(); return; }
+    const user = users.find(x => x.username === u && x.password === p);
+    if (user) { closeAdminLogin(); openAdminDash(); toast('Welcome, '+u+'! 👑','success'); }
+    else { toast('Invalid credentials!','error'); genCaptcha(); }
+}
+function openAdminDash() { document.getElementById('adminDash').classList.remove('hidden'); document.body.style.overflow = 'hidden'; showAdminSection('dashboard'); }
+function closeAdminDash() { document.getElementById('adminDash').classList.add('hidden'); document.body.style.overflow = 'auto'; renderAll(); applySettings(); }
+function toggleSidebar() {
+    const s = document.getElementById('adminSidebar');
+    const o = document.getElementById('sidebarOverlay');
+    s.classList.toggle('open');
+    o.classList.toggle('hidden');
+}
+
+function handleSS(e) {
+    const files = e.target.files;
+    if (!files) return;
+    Array.from(files).forEach(f => {
+        const r = new FileReader();
+        r.onload = ev => { tempSS.push(ev.target.result); renderSS(); };
+        r.readAsDataURL(f);
+    });
+}
+function renderSS() {
+    const c = document.getElementById('ssPreviews');
+    if (!c) return;
+    c.innerHTML = tempSS.map((url,i) => `<div class="ss-preview"><img src="${url}"><span class="del" onclick="removeSS(${i})">×</span></div>`).join('');
+}
+function removeSS(i) { tempSS.splice(i,1); renderSS(); }
+
+function showAdminSection(section) {
+    const content = document.getElementById('adminContent');
+    document.querySelectorAll('#adminSidebar button').forEach(b => b.classList.remove('bg-white','shadow-sm'));
+    const ab = document.getElementById('s-'+section);
+    if (ab) ab.classList.add('bg-white','shadow-sm');
+    
+    let html = '';
+    const td = apps.reduce((s,a)=>s+a.downloads,0);
+    const tr = apps.reduce((s,a)=>s+a.totalRatings,0);
+    
+    switch(section) {
+        case 'dashboard':
+            html = `<h3 class="text-xl font-bold mb-4">Dashboard Overview</h3>
+                <div class="grid grid-cols-2 gap-3 mb-6">
+                    <div class="bg-blue-500 text-white rounded-xl p-4"><i class="fas fa-users text-2xl mb-1"></i><div class="text-xl font-bold">${users.length}</div><div class="text-xs opacity-80">Users</div></div>
+                    <div class="bg-green-500 text-white rounded-xl p-4"><i class="fas fa-download text-2xl mb-1"></i><div class="text-xl font-bold">${fmtNum(td)}</div><div class="text-xs opacity-80">Downloads</div></div>
+                    <div class="bg-purple-500 text-white rounded-xl p-4"><i class="fas fa-star text-2xl mb-1"></i><div class="text-xl font-bold">${tr}</div><div class="text-xs opacity-80">Ratings</div></div>
+                    <div class="bg-orange-500 text-white rounded-xl p-4"><i class="fas fa-mobile-alt text-2xl mb-1"></i><div class="text-xl font-bold">${apps.length}</div><div class="text-xs opacity-80">Apps</div></div>
+                </div>
+                <div class="bg-white rounded-xl p-4"><h4 class="font-semibold text-sm mb-3">Recent Activity</h4>${notifications.slice(0,10).map(n => `<div class="text-xs py-2 border-b flex justify-between"><span>${n.message}</span><span class="text-gray-400">${n.time}</span></div>`).join('')||'<p class="text-xs text-gray-400">No activity</p>'}</div>`;
+            break;
+            
+        case 'apps':
+            tempSS = [];
+            html = `<h3 class="text-xl font-bold mb-4">Manage Apps & Software</h3>
+                <div class="bg-white rounded-xl p-4 mb-4">
+                    <h4 class="font-semibold text-sm mb-3" id="appFormTitle">Add New App</h4>
+                    <form onsubmit="saveApp(event)" class="space-y-3">
+                        <input type="hidden" id="editId">
+                        <input type="text" placeholder="App Name *" class="input text-sm" required id="appName">
+                        <select class="input text-sm" required id="appCat"><option value="">Category</option><option value="Android">Android</option><option value="PC">PC Software</option></select>
+                        <select class="input text-sm" required id="appType"><option value="free">Free</option><option value="paid">Paid</option></select>
+                        <input type="number" placeholder="Price ($)" class="input text-sm" id="appPrice" value="0" step="0.01">
+                        <textarea placeholder="Description *" class="input text-sm" rows="2" required id="appDesc"></textarea>
+                        <div class="upload-area p-3 text-sm" onclick="document.getElementById('iconUp').click()">
+                            <input type="file" id="iconUp" accept="image/*" class="hidden" onchange="handleIcon(event)"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload Icon<img id="iconPrev" class="w-12 h-12 rounded-lg object-cover mx-auto mt-2 hidden">
+                        </div>
+                        <input type="hidden" id="appIcon">
+                        <input type="url" placeholder="Download Link" class="input text-sm" id="appDL">
+                        <div class="upload-area p-3 text-sm" onclick="document.getElementById('ssUp').click()">
+                            <input type="file" id="ssUp" accept="image/*" multiple class="hidden" onchange="handleSS(event)"><i class="fas fa-images mr-2"></i>Upload Screenshots
+                        </div>
+                        <div id="ssPreviews" class="flex flex-wrap gap-2"></div>
+                        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="appFeat"> Feature on homepage</label>
+                        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="appBadge" checked> Show price badge</label>
+                        <button type="submit" class="btn w-full text-sm py-2" id="appSubmitBtn">Add App</button>
+                    </form>
+                </div>
+                <div class="bg-white rounded-xl p-4">
+                    <h4 class="font-semibold text-sm mb-3">All Apps (${apps.length})</h4>
+                    <div class="space-y-2">${apps.map(a => `<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg text-sm">
+                        <div class="flex items-center gap-2"><img src="${a.icon}" class="w-8 h-8 rounded-lg object-cover" onerror="this.src='https://via.placeholder.com/32'"><span class="font-medium text-xs">${a.name}</span><span class="text-xs text-gray-400">${a.category}</span></div>
+                        <div class="flex gap-1"><button class="text-blue-500 text-xs p-1" onclick="editApp(${a.id})"><i class="fas fa-edit"></i></button><button class="text-red-500 text-xs p-1" onclick="deleteApp(${a.id})"><i class="fas fa-trash"></i></button></div>
+                    </div>`).join('')}</div>
+                </div>`;
+            break;
+            
+        case 'ads':
+            html = `<h3 class="text-xl font-bold mb-4">Manage Ads</h3>
+                <div class="bg-white rounded-xl p-4 mb-4">
+                    <h4 class="font-semibold text-sm mb-3">Add/Edit Ad</h4>
+                    <form onsubmit="saveAd(event)" class="space-y-3">
+                        <input type="hidden" id="editAdId">
+                        <input type="text" placeholder="Ad Title *" class="input text-sm" required id="adTitle">
+                        <input type="url" placeholder="Image URL *" class="input text-sm" required id="adImg">
+                        <input type="url" placeholder="Redirect Link" class="input text-sm" id="adLink" value="#">
+                        <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="adActive" checked> Active</label>
+                        <button type="submit" class="btn w-full text-sm py-2">Save Ad</button>
+                    </form>
+                </div>
+                <div class="bg-white rounded-xl p-4"><h4 class="font-semibold text-sm mb-3">Current Ads (${ads.length})</h4>
+                    <div class="space-y-2">${ads.map(a => `<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg text-sm">
+                        <div class="flex items-center gap-3"><img src="${a.image}" class="w-20 h-12 object-cover rounded-lg" onerror="this.style.background='#ddd'"><div><p class="font-medium text-xs">${a.title}</p><p class="text-xs ${a.active?'text-green-500':'text-red-500'}">${a.active?'🟢 Active':'🔴 Inactive'}</p></div></div>
+                        <div class="flex gap-1"><button class="text-blue-500 text-xs p-1" onclick="editAd(${a.id})"><i class="fas fa-edit"></i></button><button class="text-red-500 text-xs p-1" onclick="deleteAd(${a.id})"><i class="fas fa-trash"></i></button></div>
+                    </div>`).join('')}</div>
+                </div>`;
+            break;
+            
+        case 'settings':
+            html = `<h3 class="text-xl font-bold mb-4">Website Settings</h3>
+                <div class="bg-white rounded-xl p-4 space-y-3">
+                    <div><label class="text-sm font-medium">Site Name</label><input type="text" class="input text-sm mt-1" id="setName" value="${settings.siteName}"></div>
+                    <div><label class="text-sm font-medium">Logo</label><div class="upload-area p-3 mt-1" onclick="document.getElementById('logoUp').click()"><input type="file" id="logoUp" accept="image/*" class="hidden" onchange="handleLogo(event)"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload<img id="logoPrev" class="w-16 h-16 rounded-xl object-cover mx-auto mt-2 ${settings.logoUrl?'':'hidden'}" src="${settings.logoUrl||''}"></div></div>
+                    <div><label class="text-sm font-medium">Favicon</label><div class="upload-area p-3 mt-1" onclick="document.getElementById('favUp').click()"><input type="file" id="favUp" accept="image/*" class="hidden" onchange="handleFav(event)"><i class="fas fa-cloud-upload-alt mr-2"></i>Upload<img id="favPrev" class="w-10 h-10 rounded-lg object-cover mx-auto mt-2 ${settings.faviconUrl?'':'hidden'}" src="${settings.faviconUrl||''}"></div></div>
+                    <div><label class="text-sm font-medium">Footer Text</label><input type="text" class="input text-sm mt-1" id="setFooter" value="${settings.footerText}"></div>
+                    <div><label class="text-sm font-medium">Notification Message</label><input type="text" class="input text-sm mt-1" id="setNotif" value="${settings.notifMsg||''}"></div>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="setBadge" ${settings.showBadge?'checked':''}> Show Price Badge</label>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="setNotifEna" ${settings.enableNotif?'checked':''}> Enable Notifications</label>
+                    <button class="btn w-full text-sm py-2" onclick="saveSettings()"><i class="fas fa-save mr-2"></i>Save Settings</button>
+                </div>`;
+            break;
+            
+        case 'ratings':
+            html = `<h3 class="text-xl font-bold mb-4">Manage Ratings (${ratings.length})</h3>
+                <div class="bg-white rounded-xl p-4"><div class="space-y-2">${ratings.length===0?'<p class="text-gray-400 text-sm">No ratings yet</p>':ratings.map(r => `<div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg text-sm"><div><p class="font-medium text-xs">${r.user}</p><p class="text-xs text-gray-600">${r.text||'No text'}</p><p class="text-xs text-gray-400">App: ${apps.find(a=>a.id===r.appId)?.name||'Unknown'} | ${r.date}</p></div><div class="flex items-center gap-2"><span>${stars(r.rating)}</span><button class="text-red-500 text-xs" onclick="deleteRating(${r.id})"><i class="fas fa-trash"></i></button></div></div>`).join('')}</div></div>`;
+            break;
+            
+        case 'users':
+            html = `<h3 class="text-xl font-bold mb-4">Manage Users</h3>
+                <div class="bg-white rounded-xl p-4 mb-4">
+                    <h4 class="font-semibold text-sm mb-3">Add User</h4>
+                    <form onsubmit="addUser(event)" class="space-y-3">
+                        <input type="text" placeholder="Username" class="input text-sm" required id="newUser">
+                        <input type="password" placeholder="Password" class="input text-sm" required id="newPass">
+                        <button type="submit" class="btn w-full text-sm py-2">Add User</button>
+                    </form>
+                </div>
+                <div class="bg-white rounded-xl p-4"><h4 class="font-semibold text-sm mb-3">All Users (${users.length})</h4>
+                    <div class="space-y-2">${users.map(u => `<div class="flex justify-between p-3 bg-gray-50 rounded-lg text-sm"><span class="font-medium">${u.username}</span><span class="text-xs px-2 py-1 bg-blue-100 rounded-full">${u.role}</span></div>`).join('')}</div>
+                </div>`;
+            break;
+            
+        case 'social':
+            html = `<h3 class="text-xl font-bold mb-4">Social Media Links</h3>
+                <div class="bg-white rounded-xl p-4 space-y-3">
+                    <div><label class="text-sm font-medium">WhatsApp</label><input type="text" class="input text-sm mt-1" id="setWA" value="${settings.whatsapp}"></div>
+                    <div><label class="text-sm font-medium">Facebook</label><input type="url" class="input text-sm mt-1" id="setFB" value="${settings.facebook}"></div>
+                    <div><label class="text-sm font-medium">Instagram</label><input type="url" class="input text-sm mt-1" id="setIG" value="${settings.instagram}"></div>
+                    <div><label class="text-sm font-medium">Twitter</label><input type="url" class="input text-sm mt-1" id="setTW" value="${settings.twitter}"></div>
+                    <div><label class="text-sm font-medium">Discord</label><input type="url" class="input text-sm mt-1" id="setDC" value="${settings.discord}"></div>
+                    <label class="flex items-center gap-2 text-sm"><input type="checkbox" id="setShowSoc" ${settings.showSocial?'checked':''}> Show in footer</label>
+                    <button class="btn w-full text-sm py-2" onclick="saveSocial()"><i class="fas fa-save mr-2"></i>Save</button>
+                </div>`;
+            break;
+            
+        case 'notifications':
+            html = `<h3 class="text-xl font-bold mb-4">Send Notification</h3>
+                <div class="bg-white rounded-xl p-4 space-y-3">
+                    <input type="text" placeholder="Message" class="input text-sm" id="customNotif">
+                    <button class="btn w-full text-sm py-2" onclick="sendCustomNotif()"><i class="fas fa-paper-plane mr-2"></i>Send</button>
+                </div>
+                <div class="bg-white rounded-xl p-4 mt-4"><h4 class="font-semibold text-sm mb-3">History</h4><div class="space-y-1 max-h-80 overflow-y-auto">${notifications.map(n => `<div class="p-2 bg-gray-50 rounded text-xs">${n.message} <span class="text-gray-400">${n.time}</span></div>`).join('')||'<p class="text-xs text-gray-400">None</p>'}</div></div>`;
+            break;
+    }
+    content.innerHTML = html;
+}
+
+// ==================== ADMIN CRUD ====================
+// ==================== ADMIN ====================
+function openAdminLogin() { document.getElementById('adminLoginModal').classList.remove('hidden'); }
+function closeAdminLogin() { document.getElementById('adminLoginModal').classList.add('hidden'); }
+
+async function adminLogin(e) {
+    e.preventDefault();
+    const u = document.getElementById('adminUser').value;
+    const p = document.getElementById('adminPass').value;
+    try {
+        const data = await apiCall('/login', { method: 'POST', body: JSON.stringify({ username: u, password: p }) });
+        authToken = data.token;
+        localStorage.setItem('tp_token', authToken);
+        closeAdminLogin();
+        openAdminDash();
+        toast('Welcome, ' + u + '! 👑', 'success');
+    } catch(e) { toast('Invalid credentials!', 'error'); }
+}
+
+function openAdminDash() { document.getElementById('adminDash').classList.remove('hidden'); document.body.style.overflow = 'hidden'; showAdminSection('dashboard'); }
+function closeAdminDash() { document.getElementById('adminDash').classList.add('hidden'); document.body.style.overflow = 'auto'; loadFromServer(); applySettings(); }
+function toggleSidebar() { const s = document.getElementById('adminSidebar'); const o = document.getElementById('sidebarOverlay'); s.classList.toggle('open'); o.classList.toggle('hidden'); }
+
+// ==================== ADMIN CRUD ====================
+async function saveApp(e) {
+    e.preventDefault();
+    const data = {
+        name: document.getElementById('appName').value,
+        category: document.getElementById('appCat').value,
+        type: document.getElementById('appType').value,
+        price: parseFloat(document.getElementById('appPrice').value) || 0,
+        currency: 'PKR',
+        description: document.getElementById('appDesc').value,
+        icon: document.getElementById('appIcon').value || 'https://cdn-icons-png.flaticon.com/512/5968/5968520.png',
+        downloadLink: document.getElementById('appDL').value || '#',
+        screenshots: tempSS.length > 0 ? tempSS : ['https://images.unsplash.com/photo-1611532736597-de2d4265fba3?w=600'],
+        featured: document.getElementById('appFeat').checked,
+        showBadge: document.getElementById('appBadge').checked
+    };
+    try {
+        await apiCall('/apps', { method: 'POST', body: JSON.stringify(data) });
+        toast('Added! 🎉', 'success');
+        await loadFromServer();
+        showAdminSection('apps');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function deleteApp(id) {
+    if (!confirm('Delete?')) return;
+    try {
+        await apiCall('/apps/' + id, { method: 'DELETE' });
+        toast('Deleted!', 'success');
+        await loadFromServer();
+        showAdminSection('apps');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function saveAd(e) {
+    e.preventDefault();
+    const data = { title: document.getElementById('adTitle').value, image: document.getElementById('adImg').value, link: document.getElementById('adLink').value || '#', active: true };
+    try {
+        await apiCall('/ads', { method: 'POST', body: JSON.stringify(data) });
+        toast('Ad added!', 'success');
+        ads = await apiCall('/ads');
+        showAdminSection('ads');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function deleteAd(id) {
+    if (!confirm('Delete?')) return;
+    try {
+        await apiCall('/ads/' + id, { method: 'DELETE' });
+        ads = await apiCall('/ads');
+        toast('Deleted!', 'success');
+        showAdminSection('ads');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function saveSettings() {
+    const data = {
+        siteName: document.getElementById('setName').value,
+        footerText: document.getElementById('setFooter').value,
+        notifMsg: document.getElementById('setNotif').value,
+        showBadge: document.getElementById('setBadge').checked,
+        enableNotif: document.getElementById('setNotifEna').checked
+    };
+    try {
+        await apiCall('/settings', { method: 'PUT', body: JSON.stringify(data) });
+        settings = await apiCall('/settings');
+        applySettings();
+        toast('Saved! ✅', 'success');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function saveSocial() {
+    const data = {
+        whatsapp: document.getElementById('setWA').value,
+        facebook: document.getElementById('setFB').value,
+        instagram: document.getElementById('setIG').value,
+        twitter: document.getElementById('setTW').value,
+        discord: document.getElementById('setDC').value,
+        showSocial: document.getElementById('setShowSoc').checked
+    };
+    try {
+        await apiCall('/settings', { method: 'PUT', body: JSON.stringify(data) });
+        settings = await apiCall('/settings');
+        renderSocial();
+        toast('Saved!', 'success');
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function downloadApp(id) {
+    try {
+        await apiCall('/apps/' + id + '/download', { method: 'POST' });
+        toast('Downloading! 🚀', 'success');
+        await loadFromServer();
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+async function openDetail(id) {
+    try {
+        const app = await apiCall('/apps/' + id);
+        const ar = await apiCall('/ratings/' + id);
+        history.pushState({}, '', '?app=' + id);
+        document.getElementById('modalContent').innerHTML = `
+            <div class="text-center mb-6">
+                <img src="${app.icon}" class="w-20 h-20 mx-auto mb-3 rounded-3xl shadow-lg" onerror="this.src='https://via.placeholder.com/96'">
+                <h1 class="text-2xl font-bold mb-2">${app.name}</h1>
+                <div class="flex items-center justify-center mb-2">${stars(app.rating)}<span class="ml-2 text-sm">(${app.totalRatings} reviews)</span></div>
+                <span class="text-xs px-3 py-1 bg-gray-100 rounded-full">${app.category}</span>${app.type==='paid'?'<span class="ml-2 text-sm font-bold text-orange-500">Rs '+app.price+'</span>':'<span class="ml-2 text-sm font-bold text-green-500">FREE</span>'}
+            </div>
+            <div class="mb-6"><h3 class="font-semibold mb-2 text-sm">Screenshots</h3><div class="flex overflow-x-auto gap-3">${(app.screenshots||[]).map(url => `<img src="${url}" class="w-40 h-24 rounded-lg object-cover shadow">`).join('')}</div></div>
+            <p class="text-gray-600 text-sm mb-6">${app.description}</p>
+            <div class="bg-gray-50 p-4 rounded-2xl mb-6">
+                <h3 class="font-semibold mb-2 text-sm">Rate</h3>
+                <div class="flex gap-1 mb-2">${[1,2,3,4,5].map(i => `<i class="fas fa-star text-xl cursor-pointer text-gray-300" onclick="rateStar(${app.id},${i})" id="star${i}"></i>`).join('')}</div>
+                <textarea id="reviewText" placeholder="Review..." class="input mb-2 text-sm" rows="2"></textarea>
+                <button class="btn btn-gray text-sm py-2" onclick="submitReview(${app.id})">Submit</button>
+                ${ar.length > 0 ? `<div class="mt-3 space-y-2">${ar.slice(-3).map(r => `<div class="bg-white p-3 rounded-lg text-sm"><div class="flex justify-between"><span class="font-medium">${r.user}</span><span class="text-xs">${r.date}</span></div>${stars(r.rating)}${r.text?`<p class="text-xs mt-1">${r.text}</p>`:''}</div>`).join('')}</div>` : ''}
+            </div>
+            <button class="btn w-full py-3" onclick="downloadApp(${app.id})"><i class="fas fa-download mr-2"></i>Download Now</button>
+        `;
+        document.getElementById('appModal').classList.remove('hidden');
+        document.body.style.overflow = 'hidden';
+    } catch(e) { toast('Error loading!', 'error'); }
+}
+
+function rateStar(appId, r) {
+    for (let i=1;i<=5;i++) { const s = document.getElementById('star'+i); if (s) s.className = i<=r ? 'fas fa-star text-xl cursor-pointer text-yellow-400' : 'fas fa-star text-xl cursor-pointer text-gray-300'; }
+    sessionStorage.setItem('rate_'+appId, r);
+}
+
+async function submitReview(appId) {
+    const r = parseInt(sessionStorage.getItem('rate_'+appId));
+    if (!r) { toast('Select stars!', 'warning'); return; }
+    const text = document.getElementById('reviewText')?.value || '';
+    try {
+        await apiCall('/ratings', { method: 'POST', body: JSON.stringify({ appId, rating: r, text }) });
+        toast('Review submitted! ⭐', 'success');
+        sessionStorage.removeItem('rate_'+appId);
+        closeModal();
+        await loadFromServer();
+    } catch(e) { toast('Failed!', 'error'); }
+}
+
+// ==================== UTILS ====================
+function toast(msg, type='info') {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = 'toast';
+    const colors = { success:'bg-green-500', error:'bg-red-500', info:'bg-blue-500', warning:'bg-yellow-500' };
+    const icons = { success:'fa-check-circle', error:'fa-times-circle', info:'fa-info-circle', warning:'fa-exclamation-triangle' };
+    t.innerHTML = `<div class="${colors[type]} text-white px-4 py-3 rounded-2xl shadow-2xl flex items-center gap-2 text-sm"><i class="fas ${icons[type]}"></i>${msg}</div>`;
+    c.appendChild(t);
+    setTimeout(() => { t.style.opacity='0'; setTimeout(() => t.remove(),400); }, 3000);
+}
+function scrollTo(y) { window.scrollTo({ top: y, behavior: 'smooth' }); }
+function checkDL() { const p = new URLSearchParams(location.search); const id = p.get('app'); if (id) { const a = apps.find(x => x.id===parseInt(id)); if (a) setTimeout(() => openDetail(parseInt(id)), 1000); } }
+function openPage(p) { if (p==='about') toast(settings.about,'info'); if (p==='contact') toast(settings.contact,'info'); if (p==='privacy') toast(settings.privacy,'info'); }
+function installPWA() { if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(() => { document.getElementById('installBanner').classList.add('hidden'); deferredPrompt=null; }); } else if (/iPhone|iPad|iPod/.test(navigator.userAgent)) { toast('Tap Share → Add to Home Screen','info'); } document.getElementById('installBanner').classList.add('hidden'); }
+function dismissInstall() { document.getElementById('installBanner').classList.add('hidden'); }
+
+document.addEventListener('keydown', e => {
+    if (e.ctrlKey && e.shiftKey && e.key==='A') openAdminLogin();
+    if (e.key==='Escape') { closeModal(); closeShareModal(); closeAdminLogin(); closeAdminDash(); }
+});
+window.addEventListener('popstate', () => { if (!location.search.includes('app=')) closeModal(); });
+</script>
+</body>
+</html>
